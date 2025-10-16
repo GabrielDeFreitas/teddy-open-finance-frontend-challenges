@@ -5,4 +5,4 @@ export const RoutesUrl = {
 	CUSTOMERS_SELECTED: '/customers-selected',
 } as const;
 
-export type RouterUrl = (typeof RoutesUrl)[keyof typeof RoutesUrl];
+export type RouteUrl = (typeof RoutesUrl)[keyof typeof RoutesUrl];
