@@ -26,7 +26,7 @@ function CardCustomerName({ name }: CardCustomerNameProps) {
 }
 
 function CardCustomerData({ children }: CardCustomerDataProps) {
-	return <div className="text-center space-y-1 text-sm">{children}</div>;
+	return <div className="text-center space-y-1 text-base">{children}</div>;
 }
 
 function CardCustomerSalary({ salary }: CardCustomerSalaryProps) {
