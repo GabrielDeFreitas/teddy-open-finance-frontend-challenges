@@ -38,7 +38,7 @@ function CustomersPerPage({
 					onChangeLimit(Number(e.target.value));
 					onPageChange(1);
 				}}
-				className="focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:ring-offset-2 h-9 w-20 rounded-md border border-gray-300 bg-white px-2 text-sm text-gray-900 shadow-sm transition">
+				className="focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:ring-offset-2 h-9 w-20 rounded-md border border-gray-300 bg-white px-2 text-base text-gray-900 shadow-sm transition">
 				{PER_PAGE_OPTIONS.map((option) => (
 					<option key={option} value={option}>
 						{option}

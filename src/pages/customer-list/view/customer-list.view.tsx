@@ -7,6 +7,7 @@ import { Dialog } from '../../../components/dialog';
 import type { CustomerListViewProps } from '../types';
 import { CustomerSkeleton } from '../../../components/customer-skeleton';
 import { formatCurrency } from '../../../utils/format-currency';
+import { FeedbackScreen } from '../../../components/feedback-screen';
 
 export function CustomerListView({
 	clients,
@@ -172,33 +173,21 @@ export function CustomerListView({
 
 	if (isError) {
 		return (
-			<main className="container mx-auto px-4 py-6">
-				<div className="flex min-h-[400px] flex-col items-center justify-center rounded-lg border-2 border-dashed border-red-600 bg-white p-8">
-					<h2 className="mb-2 text-xl font-semibold text-gray-900">
-						Nenhum cliente encontrado
-					</h2>
-					<p className="text-center text-gray-600">
-						No momento, não há clientes cadastrados. Tente novamente mais tarde.
-					</p>
-				</div>
-				<div className="mt-8 space-y-4">
-					<ButtonCreateCustomer label="Ir para o ínicio" />
-				</div>
-			</main>
+			<FeedbackScreen
+				title="Nenhum cliente encontrado"
+				description="No momento, não há clientes cadastrados. Tente novamente mais tarde."></FeedbackScreen>
 		);
 	}
 
 	return (
-		<div className="min-h-screen bg-gray-50">
-			<main className="container mx-auto px-4 py-6">
-				{renderSummary()}
-				{renderCards()}
-				{renderCreateButton()}
-				{renderPagination()}
-				{renderCreateDialog()}
-				{renderEditDialog()}
-				{renderDeleteDialog()}
-			</main>
-		</div>
+		<main className="container mx-auto px-4 py-6">
+			{renderSummary()}
+			{renderCards()}
+			{renderCreateButton()}
+			{renderPagination()}
+			{renderCreateDialog()}
+			{renderEditDialog()}
+			{renderDeleteDialog()}
+		</main>
 	);
 }

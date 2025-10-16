@@ -4,7 +4,7 @@ import { CardCustomer } from '../card-customer';
 import { CustomerListSummary } from '../customer-list-summary';
 
 export function CustomerSkeleton() {
-	const skeletonItems = Array.from({ length: 8 }, (_, i) => ({
+	const skeletonItems = Array.from({ length: 4 }, (_, i) => ({
 		id: `skeleton-${i + 1}`,
 	}));
 

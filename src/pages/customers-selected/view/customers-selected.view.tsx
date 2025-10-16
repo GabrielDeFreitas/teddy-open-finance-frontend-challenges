@@ -4,6 +4,7 @@ import { CustomerListSummary } from '../../../components/customer-list-summary';
 import { formatCurrency } from '../../../utils/format-currency';
 import { ButtonCreateCustomer } from '../../../components/button-create-customer';
 import type { CustomerSelectedViewProps } from '../types';
+import { FeedbackScreen } from '../../../components/feedback-screen';
 
 export function CustomerSelectedView({
 	selectedCustomers,
@@ -22,18 +23,11 @@ export function CustomerSelectedView({
 
 	function renderEmptyCard() {
 		return (
-			<main className="container mx-auto px-4 py-6">
+			<FeedbackScreen
+				title="Nenhum cliente selecionado"
+				description="Vá até a página Clientes e selecione para vê-los aqui.">
 				{renderTitle()}
-				<div className="flex min-h-[400px] flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-white p-8">
-					<h2 className="mb-2 text-xl font-semibold text-gray-900">
-						Nenhum cliente selecionado
-					</h2>
-					<p className="text-center text-gray-600">
-						Vá até a página <strong>Clientes</strong> e selecione para vê-los
-						aqui.
-					</p>
-				</div>
-			</main>
+			</FeedbackScreen>
 		);
 	}
 
@@ -78,12 +72,10 @@ export function CustomerSelectedView({
 	}
 
 	return (
-		<div className="min-h-screen bg-gray-50">
-			<main className="container mx-auto px-4 py-6">
-				{renderTitle()}
-				{renderSelectedCards()}
-				{renderClearButton()}
-			</main>
-		</div>
+		<main className="container mx-auto px-4 py-6">
+			{renderTitle()}
+			{renderSelectedCards()}
+			{renderClearButton()}
+		</main>
 	);
 }

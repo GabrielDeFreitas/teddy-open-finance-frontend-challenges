@@ -6,7 +6,6 @@ import { useState } from 'react';
 import type { CustomerProps } from '../types';
 import { CustomerListView } from '../view/customer-list.view';
 import { useCustomerSelectionContext } from '../../../context/customer-selection-context';
-import { RoutesUrl } from '../../../utils/enum/routes-url';
 
 export function CustomerListController() {
 	const { selectedCustomers, toggleSelect } = useCustomerSelectionContext();
@@ -107,21 +106,17 @@ export function CustomerListController() {
 	};
 
 	return (
-		<>
-			<a href={RoutesUrl.CUSTOMER_LIST}>lista de clientes</a>
-			<a href={RoutesUrl.CUSTOMERS_SELECTED}>clientes selecionados</a>
-			<CustomerListView
-				clients={data.clients}
-				pagination={pagination}
-				dialog={dialog}
-				form={form}
-				handlers={handlers}
-				dialogState={dialogs}
-				removeCustomer={removeCustomer}
-				isLoading={isLoading}
-				isError={error}
-				selectedCustomers={selectedCustomers}
-			/>
-		</>
+		<CustomerListView
+			clients={data.clients}
+			pagination={pagination}
+			dialog={dialog}
+			form={form}
+			handlers={handlers}
+			dialogState={dialogs}
+			removeCustomer={removeCustomer}
+			isLoading={isLoading}
+			isError={error}
+			selectedCustomers={selectedCustomers}
+		/>
 	);
 }

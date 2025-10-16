@@ -11,7 +11,7 @@ export function Pagination({
 			<button
 				key={1}
 				type="button"
-				className={`cursor-pointer h-9 w-9 flex items-center justify-center rounded-md text-sm font-medium transition-colors ${
+				className={`cursor-pointer h-9 w-9 flex items-center justify-center rounded-md text-base font-medium transition-colors ${
 					currentPage === 1
 						? 'bg-[#FF6B35] text-white hover:bg-[#FF6B35]/90'
 						: 'text-gray-700 hover:bg-gray-100'
@@ -40,7 +40,7 @@ export function Pagination({
 					<button
 						key={i}
 						type="button"
-						className={`cursor-pointer h-9 w-9 flex items-center justify-center rounded-md text-sm font-medium transition-colors ${
+						className={`cursor-pointer h-9 w-9 flex items-center justify-center rounded-md text-base font-medium transition-colors ${
 							currentPage === i
 								? 'bg-[#FF6B35] text-white hover:bg-[#FF6B35]/90'
 								: 'text-gray-700 hover:bg-gray-100'
@@ -67,7 +67,7 @@ export function Pagination({
 				<button
 					key={totalPages}
 					type="button"
-					className={`cursor-pointer h-9 w-9 flex items-center justify-center rounded-md text-sm font-medium transition-colors ${
+					className={`cursor-pointer h-9 w-9 flex items-center justify-center rounded-md text-base font-medium transition-colors ${
 						currentPage === totalPages
 							? 'bg-[#FF6B35] text-white hover:bg-[#FF6B35]/90'
 							: 'text-gray-700 hover:bg-gray-100'
