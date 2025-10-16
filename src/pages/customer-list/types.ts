@@ -16,7 +16,7 @@ export interface CustomerListViewProps {
 
 	isLoading: boolean;
 
-	customers: CustomerProps[];
+	clients: CustomerProps[];
 
 	pagination: {
 		currentPage: number;
@@ -49,7 +49,9 @@ export interface CustomerListViewProps {
 		create: () => void;
 		edit: () => void;
 		delete: () => void;
+		select: (customer: CustomerProps) => void;
 	};
 
-	selectedCustomer: { id: number; name: string } | null;
+	removeCustomer: { id: number; name: string } | null;
+	selectedCustomers: CustomerProps[];
 }

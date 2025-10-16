@@ -9,27 +9,29 @@ import { CustomerSkeleton } from '../../../components/customer-skeleton';
 import { formatCurrency } from '../../../utils/format-currency';
 
 export function CustomerListView({
-	customers,
+	clients,
 	pagination,
 	dialogState,
 	dialog,
 	form,
 	handlers,
-	selectedCustomer,
+	removeCustomer,
 	isLoading,
 	isError,
+	selectedCustomers,
 }: CustomerListViewProps) {
 	function renderSummary() {
 		return (
 			<CustomerListSummary.Root>
 				<CustomerListSummary.Found
 					text="clientes encontrados:"
-					customersFound={String(customers.length)}
+					customersFound={String(clients.length)}
 				/>
 				<CustomerListSummary.PerPage
 					text="Clientes por página:"
 					limit={pagination.limit}
 					onChangeLimit={pagination.onChangeLimit}
+					onPageChange={pagination.onPageChange}
 				/>
 			</CustomerListSummary.Root>
 		);
@@ -38,8 +40,10 @@ export function CustomerListView({
 	function renderCards() {
 		return (
 			<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-				{customers.map((customer) => (
-					<CardCustomer.Root key={customer.id}>
+				{clients.map((customer) => (
+					<CardCustomer.Root
+						key={customer.id}
+						isSelected={selectedCustomers.includes(customer)}>
 						<CardCustomer.Name name={customer.name} />
 						<CardCustomer.Data>
 							<CardCustomer.Salary salary={formatCurrency(customer.salary)} />
@@ -51,7 +55,7 @@ export function CustomerListView({
 							<CardCustomer.Button
 								icon={Plus}
 								aria-label="Selecionar cliente"
-								onClick={() => console.log('tracking')}
+								onClick={() => handlers.select(customer)}
 							/>
 							<CardCustomer.Button
 								icon={Pencil}
@@ -135,7 +139,7 @@ export function CustomerListView({
 						<p className="text-gray-900">
 							Você está prestes a excluir o cliente:{' '}
 							<span className="font-semibold">
-								{selectedCustomer?.name ?? '---'}
+								{removeCustomer?.name ?? '---'}
 							</span>
 						</p>
 						<Dialog.Action label="Excluir cliente" onClick={handlers.delete} />

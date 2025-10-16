@@ -5,8 +5,11 @@ import { useDeleteUser } from '../../../hooks/use-delete-user';
 import { useState } from 'react';
 import type { CustomerProps } from '../types';
 import { CustomerListView } from '../view/customer-list.view';
+import { useCustomerSelectionContext } from '../../../context/customer-selection-context';
+import { RoutesUrl } from '../../../utils/enum/routes-url';
 
 export function CustomerListController() {
+	const { selectedCustomers, toggleSelect } = useCustomerSelectionContext();
 	const [page, setPage] = useState(1);
 	const [limit, setLimit] = useState(8);
 	const [formData, setFormData] = useState({
@@ -19,7 +22,7 @@ export function CustomerListController() {
 		edit: false,
 		delete: false,
 	});
-	const [selectedCustomer, setSelectedCustomer] = useState<{
+	const [removeCustomer, setRemoveCustomer] = useState<{
 		id: number;
 		name: string;
 	} | null>(null);
@@ -29,6 +32,7 @@ export function CustomerListController() {
 		isLoading,
 		error,
 	} = useGetUsers({ page, limit });
+
 	const createUserMutation = useCreateUser();
 	const updateUserMutation = useUpdateUser();
 	const deleteUserMutation = useDeleteUser();
@@ -58,10 +62,10 @@ export function CustomerListController() {
 			form.onChange('salary', String(customer.salary));
 			form.onChange('company', String(customer.companyValuation));
 			setDialogs({ create: false, edit: true, delete: false });
-			setSelectedCustomer({ id: customer.id, name: customer.name });
+			setRemoveCustomer({ id: customer.id, name: customer.name });
 		},
 		openDelete: (customer: CustomerProps) => {
-			setSelectedCustomer({ id: customer.id, name: customer.name });
+			setRemoveCustomer({ id: customer.id, name: customer.name });
 			setDialogs({ create: false, edit: false, delete: true });
 		},
 		closeAll: () => setDialogs({ create: false, edit: false, delete: false }),
@@ -69,6 +73,11 @@ export function CustomerListController() {
 
 	const handlers = {
 		create: () => {
+			if (!form.data.name.trim()) {
+				alert('O nome é um campo obrigatório!');
+				return;
+			}
+
 			createUserMutation.mutate({
 				name: form.data.name,
 				salary: Number(form.data.salary),
@@ -77,10 +86,9 @@ export function CustomerListController() {
 			dialog.closeAll();
 		},
 		edit: () => {
-			if (!selectedCustomer) return;
-
+			if (!removeCustomer) return;
 			updateUserMutation.mutate({
-				id: String(selectedCustomer.id),
+				id: String(removeCustomer.id),
 				data: {
 					name: form.data.name,
 					salary: Number(form.data.salary),
@@ -90,25 +98,30 @@ export function CustomerListController() {
 			dialog.closeAll();
 		},
 		delete: () => {
-			if (!selectedCustomer) return;
-
-			deleteUserMutation.mutate(String(selectedCustomer.id));
+			if (!removeCustomer) return;
+			deleteUserMutation.mutate(String(removeCustomer.id));
 			dialog.closeAll();
-			setSelectedCustomer(null);
+			setRemoveCustomer(null);
 		},
+		select: toggleSelect,
 	};
 
 	return (
-		<CustomerListView
-			customers={data.clients}
-			pagination={pagination}
-			dialog={dialog}
-			form={form}
-			handlers={handlers}
-			dialogState={dialogs}
-			selectedCustomer={selectedCustomer}
-			isLoading={isLoading}
-			isError={error}
-		/>
+		<>
+			<a href={RoutesUrl.CUSTOMER_LIST}>lista de clientes</a>
+			<a href={RoutesUrl.CUSTOMERS_SELECTED}>clientes selecionados</a>
+			<CustomerListView
+				clients={data.clients}
+				pagination={pagination}
+				dialog={dialog}
+				form={form}
+				handlers={handlers}
+				dialogState={dialogs}
+				removeCustomer={removeCustomer}
+				isLoading={isLoading}
+				isError={error}
+				selectedCustomers={selectedCustomers}
+			/>
+		</>
 	);
 }

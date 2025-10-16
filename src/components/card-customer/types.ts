@@ -2,6 +2,7 @@ import type { ButtonHTMLAttributes, ElementType, ReactNode } from 'react';
 
 export interface CardCustomerRootProps {
 	children: ReactNode;
+	isSelected?: boolean;
 }
 
 export interface CardCustomerDataProps {

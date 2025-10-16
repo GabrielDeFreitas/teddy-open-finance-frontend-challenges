@@ -8,9 +8,14 @@ import type {
 	CardCustomerSalaryProps,
 } from './types';
 
-function CardCustomerRoot({ children }: CardCustomerRootProps) {
+function CardCustomerRoot({ children, isSelected }: CardCustomerRootProps) {
 	return (
-		<div className="group bg-white rounded-lg border border-gray-200 p-4 transition-shadow hover:shadow-md">
+		<div
+			className={`rounded-lg border p-4 transition-all ${
+				isSelected
+					? 'border-[#FF6B35] bg-orange-50'
+					: 'border-gray-200 bg-white hover:shadow-md'
+			}`}>
 			<div className="space-y-3">{children}</div>
 		</div>
 	);

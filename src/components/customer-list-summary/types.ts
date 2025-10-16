@@ -13,4 +13,5 @@ export interface CustomersPerPageProps {
 	text: string;
 	limit: number;
 	onChangeLimit: (newLimit: number) => void;
+	onPageChange: (newPage: number) => void;
 }

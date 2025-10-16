@@ -1,11 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
+import { CustomerListController } from './pages/customer-list/index.page';
 import { RoutesUrl } from './utils/enum/routes-url';
-
+import { CustomerSelectionProvider } from './context/customer-selection-context';
+import { CustomerSelectedController } from './pages/customers-selected/index.page';
 export function RouteProvider() {
 	const routes = [
 		{
 			path: '*',
-			element: <h1>error</h1>,
+			element: <h1>error page</h1>,
 		},
 		{
 			path: RoutesUrl.BASE_URL,
@@ -13,21 +15,23 @@ export function RouteProvider() {
 		},
 		{
 			path: `${RoutesUrl.CUSTOMER_LIST}`,
-			element: <h1>customer list</h1>,
+			element: <CustomerListController />,
 		},
 		{
 			path: `${RoutesUrl.CUSTOMERS_SELECTED}`,
-			element: <h1>customers selected</h1>,
+			element: <CustomerSelectedController />,
 		},
 	];
 
 	return (
 		<BrowserRouter>
-			<Routes>
-				{routes.map((route) => (
-					<Route key={route.path} path={route.path} element={route.element} />
-				))}
-			</Routes>
+			<CustomerSelectionProvider>
+				<Routes>
+					{routes.map((route) => (
+						<Route key={route.path} path={route.path} element={route.element} />
+					))}
+				</Routes>
+			</CustomerSelectionProvider>
 		</BrowserRouter>
 	);
 }
