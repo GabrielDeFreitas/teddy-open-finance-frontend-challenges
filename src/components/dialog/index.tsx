@@ -66,7 +66,7 @@ function DialogAction({ label, ...rest }: DialogActionProps) {
 			<button
 				{...rest}
 				type="button"
-				className="w-full rounded-md bg-[#FF6B35] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#E55A2B] focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:ring-offset-2">
+				className="cursor-pointer w-full rounded-md bg-[#FF6B35] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#E55A2B] focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:ring-offset-2">
 				{label}
 			</button>
 		</div>

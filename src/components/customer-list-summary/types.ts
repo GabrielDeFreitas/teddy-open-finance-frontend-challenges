@@ -5,9 +5,12 @@ export interface CustomerListSummaryRootProps {
 }
 
 export interface CustomersFoundProps {
-	customersFound: string;
+	customersFound?: string;
+	text: string;
 }
 
 export interface CustomersPerPageProps {
-	customerPerPage: string;
+	text: string;
+	limit: number;
+	onChangeLimit: (newLimit: number) => void;
 }

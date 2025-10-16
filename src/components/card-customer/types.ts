@@ -13,11 +13,11 @@ export interface CardCustomerNameProps {
 }
 
 export interface CardCustomerSalaryProps {
-	salary: number;
+	salary: string;
 }
 
 export interface CardCustomerCompanyProps {
-	company: number;
+	company: string;
 }
 
 export interface CardCustomerActionProps {
