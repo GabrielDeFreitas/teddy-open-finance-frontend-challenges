@@ -1,73 +1,45 @@
-# React + TypeScript + Vite
+## 🚀 Teddy Open Finance Frontend Challenges
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto foi desenvolvido como parte de um desafio de frontend, utilizando tecnologias modernas para criar uma aplicação responsiva e eficiente:
 
-Currently, two official plugins are available:
+- **Vite**: Ferramenta de build rápida e moderna.
+- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
+- **TypeScript**: Superset do JavaScript que adiciona tipagem estática ao código.
+- **Tailwind CSS**: Framework de CSS utilitário para criação de layouts responsivos.
+- **React Query**: Gerenciamento de estado assíncrono e cache de dados.
+- **Lucide React**: Ícones modernos e personalizáveis para React.
+- **React Router v7**: Gerenciamento de rotas e navegação entre páginas.
+- **i18next + react-i18next**: Internacionalização (i18n) e detecção automática de idioma do navegador.
+- **Axios**: Cliente HTTP para consumo de APIs REST.
+- **Biome**: Ferramenta rápida de linting e formatação de código.
+- **Plop.js**: Gerador de código automatizado para componentes, páginas e hooks.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Como Executar o Projeto
 
-## React Compiler
+### Configure as Variáveis de Ambiente
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Para melhor experiência no VSCode, instale a extensão oficial Biome.
+Assim, o código será formatado automaticamente ao salvar e seguirá os mesmos padrões usados pelos comandos lint e format.
 
-## Expanding the ESLint configuration
+Para consumir a API, você precisará de uma chave de acesso.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Acesse a [documentação Swagger ](https://boasorte.teddybackoffice.com.br/docs#/) para entender como funciona a API.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Crie um arquivo .env na raiz do projeto com a seguinte variável:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+`VITE_API_BASE_URL=https://seu-endereco-da-api.com`
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Comando          | Ação                                                         |
+| :--------------- | :------------------------------------------------------------- |
+| `pnpm install`   | Instala as dependências                                         |
+| `pnpm run dev`       | Inicia o servidor de desenvolvimento local|
+| `pnpm run generate`       | Para gerar automaticamente componentes com templates pré-definidos|
+| `pnpm run format`       | Formata todo o código do projeto conforme as regras definidas no Biome e no .editorconfig|
+| `pnpm run lint`       | Analisa o código em busca de erros e boas práticas utilizando o Biome|
+| `pnpm run build`       | Compila o código TypeScript e gera a build de produção otimizada do projeto|
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Visualizar o Projeto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Você pode visualizar o projeto em produção no seguinte link:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+[Visualizar Projeto](https://teddy-open-finance-frontend-challen.vercel.app/)
