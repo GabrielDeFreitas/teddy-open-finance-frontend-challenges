@@ -38,6 +38,23 @@ Crie um arquivo .env na raiz do projeto com a seguinte variável:
 | `pnpm run lint`       | Analisa o código em busca de erros e boas práticas utilizando o Biome|
 | `pnpm run build`       | Compila o código TypeScript e gera a build de produção otimizada do projeto|
 
+## Rodando com Docker
+
+É possível rodar o projeto utilizando Docker, sem precisar instalar Node ou dependências localmente.
+
+### Build da Imagem Docker
+
+No terminal, na raiz do projeto, execute:
+
+```bash
+docker build -t teddy-frontend .
+```
+
+Comando para rodar o Container
+
+```bash
+docker run -p 3000:80 teddy-frontend
+```
 
 ## Arquitetura do Projeto
 
