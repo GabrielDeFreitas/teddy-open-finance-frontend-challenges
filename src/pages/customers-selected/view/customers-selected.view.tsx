@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Minus } from 'lucide-react';
 import { CardCustomer } from '../../../components/card-customer';
 import { CustomerListSummary } from '../../../components/customer-list-summary';
@@ -11,11 +12,13 @@ export function CustomerSelectedView({
 	toggleSelect,
 	clearSelection,
 }: CustomerSelectedViewProps) {
+	const { t } = useTranslation();
+
 	function renderTitle() {
 		return (
 			<div className="mb-6">
 				<CustomerListSummary.Root>
-					<CustomerListSummary.Found text="Clientes selecionados:" />
+					<CustomerListSummary.Found text={t('customerSelected.title')} />
 				</CustomerListSummary.Root>
 			</div>
 		);
@@ -24,8 +27,8 @@ export function CustomerSelectedView({
 	function renderEmptyCard() {
 		return (
 			<FeedbackScreen
-				title="Nenhum cliente selecionado"
-				description="Vá até a página Clientes e selecione para vê-los aqui.">
+				title={t('customerSelected.emptyTitle')}
+				description={t('customerSelected.emptyDescription')}>
 				{renderTitle()}
 			</FeedbackScreen>
 		);
@@ -46,7 +49,7 @@ export function CustomerSelectedView({
 						<CardCustomer.Actions>
 							<CardCustomer.Button
 								icon={Minus}
-								aria-label="Remover cliente selecionado"
+								aria-label={t('customerSelected.removeButton')}
 								onClick={() => toggleSelect(customer)}
 							/>
 						</CardCustomer.Actions>
@@ -60,7 +63,7 @@ export function CustomerSelectedView({
 		return (
 			<div className="mt-8 space-y-4">
 				<ButtonCreateCustomer
-					label="Limpar clientes selecionados"
+					label={t('customerSelected.clearButton')}
 					onClick={clearSelection}
 				/>
 			</div>

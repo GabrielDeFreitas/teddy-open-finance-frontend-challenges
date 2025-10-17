@@ -8,6 +8,7 @@ import type { CustomerListViewProps } from '../types';
 import { CustomerSkeleton } from '../../../components/customer-skeleton';
 import { formatCurrency } from '../../../utils/format-currency';
 import { FeedbackScreen } from '../../../components/feedback-screen';
+import { useTranslation } from 'react-i18next';
 
 export function CustomerListView({
 	clients,
@@ -21,15 +22,17 @@ export function CustomerListView({
 	isError,
 	selectedCustomers,
 }: CustomerListViewProps) {
+	const { t } = useTranslation();
+
 	function renderSummary() {
 		return (
 			<CustomerListSummary.Root>
 				<CustomerListSummary.Found
-					text="clientes encontrados:"
+					text={t('customerList.summary.found')}
 					customersFound={String(clients.length)}
 				/>
 				<CustomerListSummary.PerPage
-					text="Clientes por página:"
+					text={t('customerList.summary.perPage')}
 					limit={pagination.limit}
 					onChangeLimit={pagination.onChangeLimit}
 					onPageChange={pagination.onPageChange}
@@ -55,17 +58,17 @@ export function CustomerListView({
 						<CardCustomer.Actions>
 							<CardCustomer.Button
 								icon={Plus}
-								aria-label="Selecionar cliente"
+								aria-label={t('customerList.buttons.selectCustomer')}
 								onClick={() => handlers.select(customer)}
 							/>
 							<CardCustomer.Button
 								icon={Pencil}
-								aria-label="Editar cliente"
+								aria-label={t('customerList.buttons.editCustomer')}
 								onClick={() => dialog.openEdit(customer)}
 							/>
 							<CardCustomer.Button
 								icon={Trash2}
-								aria-label="Excluir cliente"
+								aria-label={t('customerList.buttons.deleteCustomer')}
 								onClick={() => dialog.openDelete(customer)}
 							/>
 						</CardCustomer.Actions>
@@ -79,7 +82,7 @@ export function CustomerListView({
 		return (
 			<div className="mt-8 space-y-4">
 				<ButtonCreateCustomer
-					label="Criar cliente"
+					label={t('customerList.buttons.createCustomer')}
 					onClick={dialog.openCreate}
 				/>
 			</div>
@@ -99,12 +102,15 @@ export function CustomerListView({
 			<Dialog.Root open={dialogState.create} onOpenChange={dialog.closeAll}>
 				<Dialog.Content>
 					<Dialog.Header>
-						<Dialog.Title title="Criar cliente" />
+						<Dialog.Title title={t('customerList.dialogs.createTitle')} />
 						<Dialog.Close onClose={dialog.closeAll} />
 					</Dialog.Header>
 					<div className="space-y-4">
 						{nameSalaryCompanyInputs()}
-						<Dialog.Action label="Criar cliente" onClick={handlers.create} />
+						<Dialog.Action
+							label={t('customerList.buttons.createCustomer')}
+							onClick={handlers.create}
+						/>
 					</div>
 				</Dialog.Content>
 			</Dialog.Root>
@@ -116,12 +122,15 @@ export function CustomerListView({
 			<Dialog.Root open={dialogState.edit} onOpenChange={dialog.closeAll}>
 				<Dialog.Content>
 					<Dialog.Header>
-						<Dialog.Title title="Editar cliente" />
+						<Dialog.Title title={t('customerList.dialogs.editTitle')} />
 						<Dialog.Close onClose={dialog.closeAll} />
 					</Dialog.Header>
 					<div className="space-y-4">
 						{nameSalaryCompanyInputs()}
-						<Dialog.Action label="Salvar alterações" onClick={handlers.edit} />
+						<Dialog.Action
+							label={t('customerList.buttons.saveChanges')}
+							onClick={handlers.edit}
+						/>
 					</div>
 				</Dialog.Content>
 			</Dialog.Root>
@@ -133,17 +142,19 @@ export function CustomerListView({
 			<Dialog.Root open={dialogState.delete} onOpenChange={dialog.closeAll}>
 				<Dialog.Content>
 					<Dialog.Header>
-						<Dialog.Title title="Excluir cliente" />
+						<Dialog.Title title={t('customerList.dialogs.deleteTitle')} />
 						<Dialog.Close onClose={dialog.closeAll} />
 					</Dialog.Header>
 					<div className="space-y-4">
 						<p className="text-gray-900">
-							Você está prestes a excluir o cliente:{' '}
-							<span className="font-semibold">
-								{removeCustomer?.name ?? '---'}
-							</span>
+							{t('customerList.dialogs.deleteDescription', {
+								name: removeCustomer?.name ?? '---',
+							})}
 						</p>
-						<Dialog.Action label="Excluir cliente" onClick={handlers.delete} />
+						<Dialog.Action
+							label={t('customerList.buttons.deleteCustomer')}
+							onClick={handlers.delete}
+						/>
 					</div>
 				</Dialog.Content>
 			</Dialog.Root>
@@ -152,9 +163,9 @@ export function CustomerListView({
 
 	function nameSalaryCompanyInputs() {
 		const inputs = [
-			{ key: 'name', placeholder: 'Nome' },
-			{ key: 'salary', placeholder: 'Salário' },
-			{ key: 'company', placeholder: 'Empresa' },
+			{ key: 'name', placeholder: t('customerList.inputs.name') },
+			{ key: 'salary', placeholder: t('customerList.inputs.salary') },
+			{ key: 'company', placeholder: t('customerList.inputs.company') },
 		] as const;
 
 		return inputs.map(({ key, placeholder }) => (
@@ -167,17 +178,15 @@ export function CustomerListView({
 		));
 	}
 
-	if (isLoading) {
-		return <CustomerSkeleton />;
-	}
+	if (isLoading) return <CustomerSkeleton />;
 
-	if (isError) {
+	if (isError)
 		return (
 			<FeedbackScreen
-				title="Nenhum cliente encontrado"
-				description="No momento, não há clientes cadastrados. Tente novamente mais tarde."></FeedbackScreen>
+				title={t('customerList.feedback.noClientsTitle')}
+				description={t('customerList.feedback.noClientsDescription')}
+			/>
 		);
-	}
 
 	return (
 		<main className="container mx-auto px-4 py-6">

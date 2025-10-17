@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import type {
 	CardCustomerActionProps,
 	CardCustomerButtonProps,
@@ -30,21 +31,25 @@ function CardCustomerData({ children }: CardCustomerDataProps) {
 }
 
 function CardCustomerSalary({ salary }: CardCustomerSalaryProps) {
+	const { t } = useTranslation();
 	return (
 		<p className="text-gray-600">
-			Salário: <span className="font-medium text-gray-900">{salary}</span>
+			{t('cardCustomer.salary')}{' '}
+			<span className="font-medium text-gray-900">{salary}</span>
 		</p>
 	);
 }
 
 function CardCustomerCompany({ company }: CardCustomerCompanyProps) {
+	const { t } = useTranslation();
+
 	return (
 		<p className="text-gray-600">
-			Empresa: <span className="font-medium text-gray-900">{company}</span>
+			{t('cardCustomer.company')}{' '}
+			<span className="font-medium text-gray-900">{company}</span>
 		</p>
 	);
 }
-
 function CardCustomerActions({ children }: CardCustomerActionProps) {
 	return (
 		<div className="flex items-center justify-between gap-2 pt-2">

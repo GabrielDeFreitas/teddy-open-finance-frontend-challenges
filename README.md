@@ -38,8 +38,33 @@ Crie um arquivo .env na raiz do projeto com a seguinte variável:
 | `pnpm run lint`       | Analisa o código em busca de erros e boas práticas utilizando o Biome|
 | `pnpm run build`       | Compila o código TypeScript e gera a build de produção otimizada do projeto|
 
+
+## Arquitetura do Projeto
+
+Cada página principal da aplicação está organizada no padrão Model–View:
+
+```
+src/pages/
+ └── customer-list/
+      ├── controller/     # Model: lógica de negócios, hooks, chamadas à API e gerenciamento de estado
+      ├── view/           # View: componentes de interface e layout específicos da página
+      └── types/          # Tipagens TypeScript da página
+```
+
+- Model (Controller) → Contém toda a lógica e comunicação com serviços, APIs e hooks.
+- View → Responsável pela renderização da interface e apresentação dos dados.
+- Types → Mantém tipagens específicas da página, garantindo segurança e consistência.
+
+Essa separação garante que a lógica de negócio fique isolada da camada de apresentação, facilitando refatorações
+
+##  Components – Composition Pattern
+
+Os componentes reutilizáveis seguem o Composition Pattern, permitindo combinar pequenas unidades em elementos mais complexos sem criar hierarquias rígidas.
+
+
 ## Visualizar o Projeto
 
 Você pode visualizar o projeto em produção no seguinte link:
+
 
 [Visualizar Projeto](https://teddy-open-finance-frontend-challen.vercel.app/)

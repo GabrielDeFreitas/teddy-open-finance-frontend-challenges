@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '../../hooks/use-navigation';
 import { RoutesUrl } from '../../utils/enum/routes-url';
 import { ButtonCreateCustomer } from '../button-create-customer';
@@ -17,14 +18,18 @@ export function PageLayout({ children }: PageLayoutProps) {
 export function PageErrorLayout() {
 	const { replace } = useNavigation();
 	const goToHome = () => replace(RoutesUrl.BASE_URL);
+	const { t } = useTranslation();
 	return (
 		<div className="min-h-screen bg-gray-50">
 			<main className="container mx-auto px-4 py-6">
 				<FeedbackScreen
-					title="Ocorreu um erro inesperado"
-					description="Não foi possível carregar os dados. Tente novamente mais tarde."
+					title={t('pageError.title')}
+					description={t('pageError.description')}
 				/>
-				<ButtonCreateCustomer label="Ir para o início" onClick={goToHome} />
+				<ButtonCreateCustomer
+					label={t('pageError.buttonGoHome')}
+					onClick={goToHome}
+				/>
 			</main>
 		</div>
 	);

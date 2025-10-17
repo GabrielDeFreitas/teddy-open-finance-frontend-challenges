@@ -1,5 +1,79 @@
 {
+	"pageError": {
+		"title": "An unexpected error occurred",
+		"description": "Unable to load data. Please try again later.",
+		"buttonGoHome": "Go to home"
+	},
+	"dialog": {
+		"closeLabel": "Close",
+		"actionButton": "Confirm",
+		"inputPlaceholder": "Type here",
+		"defaultTitle": "Dialog title",
+		"defaultDescription": "Dialog description"
+	},
+	"customer": {
+		"summary": {
+			"found": "finding customers:"
+		},
+		"loading": "Loading...",
+		"actions": {
+			"select": "Select customer",
+			"edit": "Edit customer",
+			"delete": "Delete customer"
+		},
+		"buttonCreate": "Create customer"
+	},
+	"cardCustomer": {
+		"salary": "Salary:",
+		"company": "Company:"
+	},
 	"header": {
-		"title": "teddy open finance, frontend challenges"
+		"nav": {
+			"customers": "Customers",
+			"selectedCustomers": "Selected customers",
+			"logout": "Logout"
+		},
+		"greeting": "Hello, {{name}}!",
+		"toggleMenu": "Toggle menu"
+	},
+	"customerList": {
+		"summary": {
+			"found": "customers found:",
+			"perPage": "Customers per page:"
+		},
+		"buttons": {
+			"createCustomer": "Create customer",
+			"saveChanges": "Save changes",
+			"deleteCustomer": "Delete customer",
+			"selectCustomer": "Select customer",
+			"editCustomer": "Edit customer"
+		},
+		"dialogs": {
+			"createTitle": "Create customer",
+			"editTitle": "Edit customer",
+			"deleteTitle": "Delete customer",
+			"deleteDescription": "You are about to delete the customer: {{name}}"
+		},
+		"inputs": {
+			"name": "Name",
+			"salary": "Salary",
+			"company": "Company"
+		},
+		"feedback": {
+			"noClientsTitle": "No customers found",
+			"noClientsDescription": "At the moment, there are no registered customers. Please try again later."
+		}
+	},
+	"customerLogin": {
+		"greeting": "Hello, welcome!",
+		"namePlaceholder": "Enter your name",
+		"submitButton": "Enter"
+	},
+	"customerSelected": {
+		"title": "Selected customers:",
+		"emptyTitle": "No customers selected",
+		"emptyDescription": "Go to the Customers page and select to see them here.",
+		"removeButton": "Remove selected customer",
+		"clearButton": "Clear selected customers"
 	}
 }
