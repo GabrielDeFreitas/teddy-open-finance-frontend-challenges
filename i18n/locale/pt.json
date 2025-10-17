@@ -75,5 +75,16 @@
 		"emptyDescription": "Vá até a página Clientes e selecione para vê-los aqui.",
 		"removeButton": "Remover cliente selecionado",
 		"clearButton": "Limpar clientes selecionados"
+	},
+	"toast": {
+		"nameRequired": "O nome é um campo obrigatório!",
+		"loginNameRequired": "Por favor, digite seu nome antes de continuar.",
+		"loginSuccess": "Login realizado com sucesso!",
+		"userCreated": "Usuário criado com sucesso!",
+		"userUpdated": "Usuário atualizado com sucesso!",
+		"userDeleted": "Usuário deletado com sucesso!",
+		"userCreateError": "Erro ao criar usuário. Tente novamente.",
+		"userUpdateError": "Erro ao atualizar usuário. Tente novamente.",
+		"userDeleteError": "Erro ao deletar usuário. Tente novamente."
 	}
 }
