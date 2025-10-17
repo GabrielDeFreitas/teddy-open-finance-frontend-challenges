@@ -11,6 +11,7 @@ import type {
 	HeaderLogoButtonProps,
 } from './types';
 import { Menu } from 'lucide-react';
+import { useAuthContext } from '../../context/auth-context';
 
 function HeaderRoot({ children }: HeaderRootProps) {
 	return (
@@ -129,7 +130,7 @@ function HeaderMain() {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
 	const location = useLocation();
 	const { redirect } = useNavigation();
-
+	const { userName, logout } = useAuthContext();
 	const currentPath = location.pathname;
 
 	const handleLogout = () => {
@@ -147,13 +148,13 @@ function HeaderMain() {
 			</div>
 
 			<DesktopNav isActive={isActive} handleLogout={handleLogout} />
-			<HeaderUser name="fulano" />
+			<HeaderUser name={userName ?? ''} />
 
 			<MobileMenu
 				sidebarOpen={sidebarOpen}
 				setSidebarOpen={setSidebarOpen}
 				isActive={isActive}
-				handleLogout={handleLogout}
+				handleLogout={logout}
 			/>
 		</HeaderRoot>
 	);
