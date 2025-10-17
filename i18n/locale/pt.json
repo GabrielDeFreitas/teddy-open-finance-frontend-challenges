@@ -1,5 +1,90 @@
 {
+	"pageError": {
+		"title": "Ocorreu um erro inesperado",
+		"description": "Não foi possível carregar os dados. Tente novamente mais tarde.",
+		"buttonGoHome": "Ir para o início"
+	},
+	"dialog": {
+		"closeLabel": "Fechar",
+		"actionButton": "Confirmar",
+		"inputPlaceholder": "Digite aqui",
+		"defaultTitle": "Título do diálogo",
+		"defaultDescription": "Descrição do diálogo"
+	},
+	"customer": {
+		"summary": {
+			"found": "encontrando clientes:"
+		},
+		"loading": "Carregando...",
+		"actions": {
+			"select": "Selecionar cliente",
+			"edit": "Editar cliente",
+			"delete": "Deletar cliente"
+		},
+		"buttonCreate": "Criar cliente"
+	},
+	"cardCustomer": {
+		"salary": "Salário:",
+		"company": "Empresa:"
+	},
 	"header": {
-		"title": "teddy open finance, desafio frontend"
+		"nav": {
+			"customers": "Clientes",
+			"selectedCustomers": "Clientes selecionados",
+			"logout": "Sair"
+		},
+		"greeting": "Olá, {{name}}!",
+		"toggleMenu": "Alternar menu"
+	},
+	"customerList": {
+		"summary": {
+			"found": "clientes encontrados:",
+			"perPage": "Clientes por página:"
+		},
+		"buttons": {
+			"createCustomer": "Criar cliente",
+			"saveChanges": "Salvar alterações",
+			"deleteCustomer": "Excluir cliente",
+			"selectCustomer": "Selecionar cliente",
+			"editCustomer": "Editar cliente"
+		},
+		"dialogs": {
+			"createTitle": "Criar cliente",
+			"editTitle": "Editar cliente",
+			"deleteTitle": "Excluir cliente",
+			"deleteDescription": "Você está prestes a excluir o cliente: {{name}}"
+		},
+		"inputs": {
+			"name": "Nome",
+			"salary": "Salário",
+			"company": "Empresa"
+		},
+		"feedback": {
+			"noClientsTitle": "Nenhum cliente encontrado",
+			"noClientsDescription": "No momento, não há clientes cadastrados. Tente novamente mais tarde."
+		}
+	},
+	"customerLogin": {
+		"greeting": "Olá, seja bem-vindo!",
+		"namePlaceholder": "Digite seu nome",
+		"submitButton": "Entrar"
+	},
+	"customerSelected": {
+		"title": "Clientes selecionados:",
+		"emptyTitle": "Nenhum cliente selecionado",
+		"emptyDescription": "Vá até a página Clientes e selecione para vê-los aqui.",
+		"removeButton": "Remover cliente selecionado",
+		"clearButton": "Limpar clientes selecionados"
+	},
+	"toast": {
+		"nameRequired": "O nome é um campo obrigatório!",
+		"loginNameRequired": "Por favor, digite seu nome antes de continuar.",
+		"loginSuccess": "Login realizado com sucesso!",
+		"userCreated": "Usuário criado com sucesso!",
+		"userUpdated": "Usuário atualizado com sucesso!",
+		"userDeleted": "Usuário deletado com sucesso!",
+		"userCreateError": "Erro ao criar usuário. Tente novamente.",
+		"userUpdateError": "Erro ao atualizar usuário. Tente novamente.",
+		"userDeleteError": "Erro ao deletar usuário. Tente novamente."
 	}
 }

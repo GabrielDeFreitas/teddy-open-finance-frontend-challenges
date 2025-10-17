@@ -9,6 +9,7 @@ import type {
 	DialogProps,
 	DialogTitleProps,
 } from './types';
+import { useTranslation } from 'react-i18next';
 
 function DialogRoot({ open, onOpenChange, children }: DialogProps) {
 	useDialog(open);
@@ -85,12 +86,14 @@ function DialogInput({ placeholder, ...rest }: DialogInputProps) {
 }
 
 function DialogClose({ onClose }: { onClose: () => void }) {
+	const { t } = useTranslation();
+
 	return (
 		<button
 			type="button"
 			className="cursor-pointer rounded-md p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors"
 			onClick={onClose}
-			aria-label="Fechar">
+			aria-label={t('dialog.closeLabel')}>
 			<X className="h-5 w-5 text-gray-900" />
 		</button>
 	);

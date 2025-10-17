@@ -12,6 +12,7 @@ import type {
 } from './types';
 import { Menu } from 'lucide-react';
 import { useAuthContext } from '../../context/auth-context';
+import { useTranslation } from 'react-i18next';
 
 function HeaderRoot({ children }: HeaderRootProps) {
 	return (
@@ -24,6 +25,8 @@ function HeaderRoot({ children }: HeaderRootProps) {
 }
 
 function DesktopNav({ isActive, handleLogout }: DesktopNavProps) {
+	const { t } = useTranslation();
+
 	return (
 		<nav className="hidden md:flex items-center gap-6">
 			<Link
@@ -33,7 +36,7 @@ function DesktopNav({ isActive, handleLogout }: DesktopNavProps) {
 						? 'text-[#FF6B35] underline'
 						: 'text-gray-600 hover:text-gray-900'
 				}`}>
-				Clientes
+				{t('header.nav.customers')}
 			</Link>
 
 			<Link
@@ -43,14 +46,14 @@ function DesktopNav({ isActive, handleLogout }: DesktopNavProps) {
 						? 'text-[#FF6B35] underline'
 						: 'text-gray-600 hover:text-gray-900'
 				}`}>
-				Clientes selecionados
+				{t('header.nav.selectedCustomers')}
 			</Link>
 
 			<button
 				type="button"
 				onClick={handleLogout}
 				className="text-base font-medium text-gray-600 hover:text-gray-900">
-				Sair
+				{t('header.nav.logout')}
 			</button>
 		</nav>
 	);
@@ -62,6 +65,7 @@ function MobileMenu({
 	isActive,
 	handleLogout,
 }: MobileMenuProps) {
+	const { t } = useTranslation();
 	if (!sidebarOpen) return null;
 
 	const links = [
@@ -98,7 +102,7 @@ function MobileMenu({
 						type="button"
 						onClick={handleLogout}
 						className="flex items-center gap-3 rounded-md px-4 py-3 text-base font-medium transition-colors text-gray-700 hover:bg-gray-100">
-						Sair
+						{t('header.nav.logout')}
 					</button>
 				</nav>
 			</div>
@@ -107,25 +111,26 @@ function MobileMenu({
 }
 
 function HeaderLogoButton({ onToggle }: HeaderLogoButtonProps) {
+	const { t } = useTranslation();
 	return (
 		<button
 			type="button"
 			className="left-4 top-4 z-50 rounded-md p-2 transition-colors hover:bg-gray-100"
 			onClick={onToggle}
-			aria-label="Toggle menu">
+			aria-label={t('header.toggleMenu')}>
 			<Menu className="h-5 w-5" />
 		</button>
 	);
 }
 
 function HeaderUser({ name }: HeaderUserProps) {
+	const { t } = useTranslation();
 	return (
 		<div className="text-base text-gray-900">
-			Olá, <span className="font-semibold">{name}!</span>
+			{t('header.greeting', { name })}
 		</div>
 	);
 }
-
 function HeaderMain() {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
 	const location = useLocation();

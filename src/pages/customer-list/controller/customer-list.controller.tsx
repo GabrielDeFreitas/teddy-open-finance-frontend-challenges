@@ -6,8 +6,11 @@ import { useState } from 'react';
 import type { CustomerProps } from '../types';
 import { CustomerListView } from '../view/customer-list.view';
 import { useCustomerSelectionContext } from '../../../context/customer-selection-context';
+import { showToast } from '../../../utils/show-toast';
+import { useTranslation } from 'react-i18next';
 
 export function CustomerListController() {
+	const { t } = useTranslation();
 	const { selectedCustomers, toggleSelect } = useCustomerSelectionContext();
 	const [page, setPage] = useState(1);
 	const [limit, setLimit] = useState(8);
@@ -73,7 +76,7 @@ export function CustomerListController() {
 	const handlers = {
 		create: () => {
 			if (!form.data.name.trim()) {
-				alert('O nome é um campo obrigatório!');
+				showToast(t('toast.nameRequired'), 'error');
 				return;
 			}
 

@@ -2,8 +2,11 @@ import { Pencil, Plus, Trash2 } from 'lucide-react';
 import { ButtonCreateCustomer } from '../button-create-customer';
 import { CardCustomer } from '../card-customer';
 import { CustomerListSummary } from '../customer-list-summary';
+import { useTranslation } from 'react-i18next';
 
 export function CustomerSkeleton() {
+	const { t } = useTranslation();
+
 	const skeletonItems = Array.from({ length: 4 }, (_, i) => ({
 		id: `skeleton-${i + 1}`,
 	}));
@@ -13,14 +16,15 @@ export function CustomerSkeleton() {
 			<main className="container mx-auto px-4 py-6">
 				<CustomerListSummary.Root>
 					<CustomerListSummary.Found
-						text="encontrando clientes:"
+						text={t('customer.summary.found')}
 						customersFound={'0'}
 					/>
 				</CustomerListSummary.Root>
+
 				<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 					{skeletonItems.map((item) => (
 						<CardCustomer.Root key={item.id}>
-							<CardCustomer.Name name="Carregando..." />
+							<CardCustomer.Name name={t('customer.loading')} />
 							<CardCustomer.Data>
 								<CardCustomer.Salary salary={'0'} />
 								<CardCustomer.Company company={'0'} />
@@ -28,17 +32,17 @@ export function CustomerSkeleton() {
 							<CardCustomer.Actions>
 								<CardCustomer.Button
 									icon={Plus}
-									aria-label="Selecionar cliente"
+									aria-label={t('customer.actions.select')}
 									disabled
 								/>
 								<CardCustomer.Button
 									icon={Pencil}
-									aria-label="Editar cliente"
+									aria-label={t('customer.actions.edit')}
 									disabled
 								/>
 								<CardCustomer.Button
 									icon={Trash2}
-									aria-label="Deletar cliente"
+									aria-label={t('customer.actions.delete')}
 									disabled
 								/>
 							</CardCustomer.Actions>
@@ -48,8 +52,8 @@ export function CustomerSkeleton() {
 
 				<div className="mt-8 space-y-4">
 					<ButtonCreateCustomer
-						label="Criar cliente"
-						aria-label="Criar cliente"
+						label={t('customer.buttonCreate')}
+						aria-label={t('customer.buttonCreate')}
 						disabled
 					/>
 				</div>
