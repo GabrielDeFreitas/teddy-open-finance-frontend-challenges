@@ -3,38 +3,37 @@ import { CustomerListController } from './pages/customer-list/index.page';
 import { RoutesUrl } from './utils/enum/routes-url';
 import { CustomerSelectionProvider } from './context/customer-selection-context';
 import { CustomerSelectedController } from './pages/customers-selected/index.page';
-import { Header } from './components/header';
+import { PrivateRoute } from './private-route';
+import { CustomerLoginController } from './pages/customer-login/index.page';
+import { PageErrorLayout, PageLayout } from './components/page-layout';
 export function RouteProvider() {
 	const routes = [
 		{
 			path: '*',
-			element: (
-				<div className="min-h-screen bg-gray-50">
-					<Header />
-					<h1>error page</h1>
-				</div>
-			),
+			element: <PageErrorLayout />,
 		},
 		{
 			path: RoutesUrl.BASE_URL,
-			element: <h1>home page</h1>,
+			element: <CustomerLoginController />,
 		},
 		{
 			path: `${RoutesUrl.CUSTOMER_LIST}`,
 			element: (
-				<div className="min-h-screen bg-gray-50">
-					<Header />
-					<CustomerListController />
-				</div>
+				<PrivateRoute>
+					<PageLayout>
+						<CustomerListController />
+					</PageLayout>
+				</PrivateRoute>
 			),
 		},
 		{
 			path: `${RoutesUrl.CUSTOMERS_SELECTED}`,
 			element: (
-				<div className="min-h-screen bg-gray-50">
-					<Header />
-					<CustomerSelectedController />
-				</div>
+				<PrivateRoute>
+					<PageLayout>
+						<CustomerSelectedController />
+					</PageLayout>
+				</PrivateRoute>
 			),
 		},
 	];
