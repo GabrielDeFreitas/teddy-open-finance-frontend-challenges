@@ -78,6 +78,24 @@ Essa separação garante que a lógica de negócio fique isolada da camada de ap
 
 Os componentes reutilizáveis seguem o Composition Pattern, permitindo combinar pequenas unidades em elementos mais complexos sem criar hierarquias rígidas.
 
+## CI/CD Workflow
+
+Este projeto usa GitHub Actions para garantir que o código na branch `master` seja sempre construído corretamente.
+
+### Quando roda
+
+- A cada **push** na branch `master`.
+- A cada **pull request** direcionado para `master`.
+
+### O que acontece
+
+1. O GitHub faz o **checkout** do código.
+2. Configura a versão do **Node.js**.
+3. Instala as dependências com **pnpm**.
+4. Executa o **build** do projeto.
+
+Tudo isso acontece automaticamente, garantindo que o projeto sempre compile antes de qualquer merge.
+
 
 ## Visualizar o Projeto
 
